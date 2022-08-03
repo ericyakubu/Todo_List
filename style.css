@@ -7,8 +7,9 @@
 :root {
     --todoItemFinishedBackColor: rgba(0, 200, 0, 0.5);
     --todoItemImportantBackColor: rgba(200, 0, 0, 0.5);
-    --todoItemAfterBackColor: rgba(128, 128, 128, 0.5);
-    --todoItemBackColor: rgba(255, 165, 0, 1);
+    --todoItemAfterBackColor: rgba(128, 128, 128, 0.25);
+    --todoListBackColor: rgba(200, 165, 0, 0.5);
+    --todoItemBackColor: rgba(255, 165, 0, 0.5);
     --todoHeadColor: none;
     --todoAddColor: rgba(255, 255, 255, 0.1);
 }
@@ -74,13 +75,6 @@ button:hover {
 
     max-width: 100vw;
     max-height: 100vh;
-}
-
-@media (max-width: 425px) {
-    .todoContainer {
-        height: 100vh;
-        justify-content: space-between;
-    }
 }
 
 .todoHeader {
@@ -199,7 +193,7 @@ button:hover {
 #todoList {
     width: 100%;
     height: 33.5rem;
-    background-color: var(--todoItemBackColor);
+    background-color: var(--todoListBackColor);
     border-radius: 1rem;
     -webkit-border-radius: 1rem;
     -moz-border-radius: 1rem;
@@ -277,4 +271,35 @@ button:hover {
 
 .itemControls i {
     font-size: 1.75rem;
+}
+
+@media (max-width: 425px) {
+    #sorting,
+    #addItem {
+        margin: 0;
+    }
+    .todoContainer {
+        height: 100vh;
+        justify-content: space-between;
+    }
+
+    .todoItem p {
+        width: calc(100% - 4.5rem);
+    }
+
+    .itemControlContainer {
+        width: 4.5rem;
+    }
+
+    .itemControls i {
+        font-size: 1.25rem;
+    }
+
+    #todoList {
+        border-radius: 1rem 1rem 0 0;
+        -webkit-border-radius: 1rem 1rem 0 0;
+        -moz-border-radius: 1rem 1rem 0 0;
+        -ms-border-radius: 1rem 1rem 0 0;
+        -o-border-radius: 1rem 1rem 0 0;
+    }
 }
