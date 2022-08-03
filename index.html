@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://kit.fontawesome.com/18f6c381a7.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css" />
+        <script src="app.js" defer></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+        <title>Todo List</title>
+    </head>
+    <body>
+        <main class="todoContainer">
+            <div class="todoHeader">
+                <h1>Todo List</h1>
+            </div>
+            <div id="addItem">
+                <input type="text" id="addItemInput" placeholder="What's your next plan?" />
+                <button id="addItemButton"><i class="fas fa-plus-circle"></i></button>
+            </div>
+            <div id="sorting">
+                <h2>Sort by</h2>
+                <select name="" id="selectSorting">
+                    <option value="all">All</option>
+                    <option value="important">Important</option>
+                    <option value="finished">Finished</option>
+                    <option value="unimportant">Not Important</option>
+                    <option value="uncompleted">Not Completed</option>
+                </select>
+            </div>
+            <div id="todoList"></div>
+        </main>
+    </body>
+</html>

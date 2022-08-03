@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --todoItemFinishedBackColor: rgba(0, 200, 0, 0.5);
+    --todoItemImportantBackColor: rgba(200, 0, 0, 0.5);
+    --todoItemAfterBackColor: rgba(128, 128, 128, 0.5);
+    --todoItemBackColor: rgba(255, 165, 0, 1);
+    --todoHeadColor: none;
+    --todoAddColor: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: #330000;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 400'%3E%3Cdefs%3E%3CradialGradient id='a' cx='396' cy='281' r='514' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23D18'/%3E%3Cstop offset='1' stop-color='%23330000'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='400' y1='148' x2='400' y2='333'%3E%3Cstop offset='0' stop-color='%23FA3' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23FA3' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='400'/%3E%3Cg fill-opacity='0.4'%3E%3Ccircle fill='url(%23b)' cx='267.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='532.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='400' cy='30' r='300'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: "Montserrat", sans-serif;
+}
+
+.important,
+.finish,
+.delete {
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+.important:hover {
+    color: red;
+}
+.finish:hover {
+    color: green;
+}
+.delete:hover {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+i {
+    pointer-events: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.todoContainer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35rem;
+
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+@media (max-width: 425px) {
+    .todoContainer {
+        height: 100vh;
+        justify-content: space-between;
+    }
+}
+
+.todoHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 5rem;
+    background-color: var(--todoHeadColor);
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+#addItem {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    background-color: var(--todoAddColor);
+    margin: 1rem 0 0.5rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    transition: all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    -ms-transition: all 0.1s ease;
+    -o-transition: all 0.1s ease;
+}
+
+#addItemInput {
+    width: 90%;
+    padding: 1rem 0.5rem;
+    border: none;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+#addItemInput:focus {
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 255, 0, 1);
+    box-shadow: 0px 0px 5px 1px rgba(0, 255, 0, 1);
+    transform: scale(1.01);
+    outline: none;
+    -webkit-transform: scale(1.01);
+    -moz-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    -o-transform: scale(1.01);
+}
+
+#addItem button {
+    font-size: 1.75rem;
+}
+
+#sorting {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    background-color: var(--todoAddColor);
+    margin: 0.5rem 0 1rem;
+    color: white;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+#sorting select {
+    width: 40%;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+}
+
+#sorting select:focus {
+    outline: none;
+}
+
+#sorting option {
+    border-radius: none;
+    -webkit-border-radius: none;
+    -moz-border-radius: none;
+    -ms-border-radius: none;
+    -o-border-radius: none;
+}
+
+#todoList {
+    width: 100%;
+    height: 33.5rem;
+    background-color: var(--todoItemBackColor);
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.todoItem {
+    padding: 1rem;
+    min-height: 3rem;
+    background-color: var(--todoItemBackColor);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+
+.todoItem p {
+    font-weight: normal;
+    font-size: 1.35rem;
+    width: calc(100% - 5.5rem);
+    padding: 0 1rem 0 0;
+}
+
+.todoItem.finished {
+    background-color: var(--todoItemFinishedBackColor);
+}
+.todoItem.finished p {
+    text-decoration: line-through;
+}
+
+.todoItem.markedImportant {
+    background-color: var(--todoItemImportantBackColor);
+}
+.todoItem.markedImportant p {
+    text-decoration: none;
+}
+
+.todoItem.deleting {
+    transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    -moz-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    -o-transform: translateX(50%);
+    opacity: 0;
+}
+
+.todoItem:not(:last-child):after {
+    content: "";
+    display: block;
+    width: 100%;
+    transform: translateX(-1rem);
+    height: 1px;
+    background-color: var(--todoItemAfterBackColor);
+    position: absolute;
+    bottom: 0;
+    -webkit-transform: translateX(-1rem);
+    -moz-transform: translateX(-1rem);
+    -ms-transform: translateX(-1rem);
+    -o-transform: translateX(-1rem);
+}
+
+.itemControlContainer {
+    display: flex;
+    width: 5.5rem;
+    justify-content: space-between;
+}
+
+.itemControls i {
+    font-size: 1.75rem;
+}
