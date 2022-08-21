@@ -203,6 +203,29 @@ button:hover {
     overflow-y: scroll;
 }
 
+#todoList::-webkit-scrollbar {
+    width: 0.5rem;
+    background: none;
+}
+#todoList::-webkit-scrollbar-track {
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    background-color: transparent;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+    margin: 0.5rem 0;
+}
+#todoList::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+}
+
 .todoItem {
     padding: 1rem;
     min-height: 3rem;
